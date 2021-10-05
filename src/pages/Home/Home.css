@@ -1,0 +1,162 @@
+.vaccine-img {
+    width: 20vw;
+    height: 20vw;
+    background-color: #4A50C0;
+    padding: 5vh 5vw;
+}
+
+.home .page-content h4 {
+    font-weight: 400;
+    font-size: 3vh;
+}
+
+.home .page-content p {
+    font-weight: 700;
+    font-size: 8vh;
+
+    line-height: 10vh;
+}
+
+.home .left-pane {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    flex: 1;
+}
+
+.home .btn-group{
+    margin-top: 4vh;
+}
+
+.syringe-img {
+    background-color: #fff;
+    width: 5vw;
+    height: 5vw;
+    padding: 2vh;
+
+    border-radius: 2vh;
+}
+
+.home .vaccine-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.home .vaccine-status h4 {
+    color: #E2E2E2;
+    font-size: 2.5vh;
+
+    text-align: center;
+}
+
+.home .vaccine-status p {
+    font-size: 7vh;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+.home .vaccine-why {
+    padding: 10vh 20vw;
+    text-align: center;
+}
+
+.home .vaccine-why h2 {
+    font-weight: 500;
+    font-size: 4vh;
+    margin-bottom: 4vh;
+}
+
+.home .vaccine-why p {
+    font-size: 2.5vh;
+}
+
+.home .page-highlight2 {
+    background-color: #F5F5FF;
+    color: #000;
+}
+
+.home .vaccine-steps {
+    padding: 10vh 20vw;
+    text-align: center;
+}
+
+.home .vaccine-steps h2 {
+    font-size: 4vh;
+    font-weight: 500;
+}
+
+.vaccination-steps {
+    display: flex;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;
+}
+
+.vaccination-step {
+    flex: 0.3;
+}
+
+.vaccination-step .step-number {
+    margin: 5vh auto;
+
+    width: 4vh;
+    height: 4vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 500;
+    padding: 2vh;
+    border-radius: 100%;
+    border: solid 3px #4A50C0;
+
+    font-size: 3.8vh;
+}
+
+.vaccination-step .step-heading {
+    font-weight: 400;
+    font-size: 2.2vh;
+
+    margin-bottom: 5vh;
+}
+
+.home .vaccine-immune .vaccine-immune-heading {
+    text-align: center;
+
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 4vh;
+}
+
+.home .vaccine-immune .vaccine-immune-label {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.home .vaccine-types {
+    display: flex;
+    justify-content: space-evenly;
+
+    font-family: "Roboto", sans-serif;
+}
+
+.home .vaccine-faqs h2 {
+    margin-bottom: 4vh;
+    text-align: center;
+    font-size: 4vh;
+    font-weight: 500;
+}
+
+.home .vaccine-faqs p {
+    margin-bottom: 2.5vh;
+    font-size: 2.5vh;
+    text-align: center;
+}
+
+.home .vaccine-types {
+    flex-wrap: wrap;
+}

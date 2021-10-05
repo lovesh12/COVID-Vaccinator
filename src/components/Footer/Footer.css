@@ -1,0 +1,32 @@
+.footer-footer {
+    display: flex;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;
+}
+
+.footer-sections {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3vh;
+
+    flex-wrap: wrap;
+}
+
+.footer-section h2 {
+    font-weight: 500;
+    margin-bottom: 2vh;
+}
+
+.footer-section .links {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section a {
+    margin: 0.6vh;
+}
+
+.footer-section {
+    margin: 2vh;
+}

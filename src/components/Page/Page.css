@@ -1,0 +1,23 @@
+.page-content {
+    background: url(/src/background.png);
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 8vh 8vw;
+
+    flex-wrap: wrap;
+}
+
+.page-highlight {
+    padding: 7vh 8vw;
+    background-color: #4A50C0;
+    color: #fff;
+}
+
+.page-normal {
+    background-color: #fff;
+    color: #000;
+
+    padding: 7vh 8vw;
+}

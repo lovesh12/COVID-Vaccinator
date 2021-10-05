@@ -1,0 +1,36 @@
+.vaccine-detail {
+    text-align: left;
+}
+
+.vaccine-detail h2.vaccine-detail-head {
+    font-size: 3vh !important;
+    margin-bottom: 5vh !important;
+}
+
+.vaccine-dose-day .circle {
+    width: 7vh;
+    height: 7vh;
+
+    border: solid 2px #4A50C0;
+    border-radius: 100%;
+}
+
+.vaccine-dose-day {
+    display: flex;
+    margin: 3vh 1vw;
+}
+
+.vaccine-dose-day .dose-day-details {
+    margin-left: 0.8vw;
+}
+
+.vaccine-dose-day h2 {
+    margin: 0;
+    font-size: 3vh !important;
+}
+
+.vaccine-dose-day p {
+    margin: 0;
+    color: #8F8F8F;
+    font-size: 2.2vh !important;
+}

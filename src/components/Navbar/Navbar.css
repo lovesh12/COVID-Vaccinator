@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #4A50C0;
+    padding: 2vh 5vw;
+
+    color: #fff;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    user-select: none;
+
+    flex-wrap: wrap;
+}
+
+.nav-btns {
+    margin-left: auto;
+
+    flex-wrap: wrap;
+}

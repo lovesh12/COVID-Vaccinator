@@ -1,0 +1,56 @@
+.btn-group {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    margin: 1.5vh;
+
+    border-radius: 10vh;
+    border: solid 2px #fff;
+    padding:  0.8vh 1vw;
+
+    transition: all 0.3s ease-in-out;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    text-align: center;
+    user-select: none;
+}
+
+.btn.big {
+    padding: 1.4vh 1vw;
+    border-width: 3px;
+}
+
+.btn.inverted {
+    background-color: #4A50C0;
+    border-color: #4A50C0;
+    color: #fff;
+}
+
+.btn.bordered {
+    border-color: #4A50C0;
+    color: #4A50C0;
+    background-color: white;
+}
+
+.btn-icon {
+    margin-right: 1vh;
+
+    font-size: 2.5vh;
+}
+
+.btn:hover {
+    color: #4A50C0;
+    background-color: #fff;
+}
+
+.btn.bordered:hover {
+    background-color: #4A50C0;
+    color: white;
+}
