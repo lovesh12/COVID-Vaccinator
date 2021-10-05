@@ -1,0 +1,53 @@
+.login-page .page-content {
+    justify-content: center;
+}
+
+.login-card {
+    position: relative;
+    padding: 15vh 6vh 6vh;
+
+    margin-top: 8vh;
+}
+
+.login-card h2 {
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.login-card .top-circle {
+    position: absolute;
+
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 100%;
+
+    padding: 2.2vw;
+
+    background-color: white;
+
+    top: 0%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+
+    width: 6vw;
+    height: 6vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card .top-circle img {
+    width: 5vw;
+    height: 5vw;
+
+    padding: 1vw;
+    background-color: #F5F5FF;
+
+    border-radius: 100%;
+
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}

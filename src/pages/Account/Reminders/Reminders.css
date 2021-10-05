@@ -1,0 +1,27 @@
+.reminders .page-content {
+    display: block;
+}
+
+.reminders h1 {
+    text-align: center;
+    font-size: 6vh;
+}
+
+.reminder-noti {
+    background: white;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+    padding: 1vh 0.8vw;
+    border-radius: 1vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 4vh;
+}
+
+.reminder-noti-icon {
+    margin-right: 0.8vw;
+    font-size: 3vh;
+    color: #6A6A6A;
+}

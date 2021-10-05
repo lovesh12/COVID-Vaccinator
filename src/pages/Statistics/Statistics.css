@@ -1,0 +1,60 @@
+.statistics .page-content {
+    display: block !important;
+}
+
+.statistics .short-stats {
+    text-align: center;
+}
+
+.statistics .short-stats h3 {
+    font-weight: 500;
+}
+
+.statistics .short-stats p {
+    color: #6B6B6B;
+}
+
+.statistics .search-btns {
+    margin: 4vh 0;
+}
+
+.statistics .total-doses {
+    width: 40vw;
+    margin: auto;
+}
+
+.statistics .total-doses img {
+    width: 4vw;
+    height: 4vw;
+}
+
+.statistics .total-doses h2 {
+    font-weight: 500;
+}
+
+.statistics .total-doses p {
+    font-size: 2.2vh;
+    color: #6B6B6B;
+    font-weight: 500;
+}
+
+.statistics .total-doses .card-heading {
+    margin-bottom: 5vh;
+}
+
+.statistics .total-doses .dose-data-type {
+    font-weight: normal;
+}
+
+.statistics .vaccination-categories {
+    margin: 5vh 0;
+}
+
+.statistics .vaccination-categories h3 {
+    font-weight: 500;
+}
+
+.statistics .more-stats h3 {
+    text-align: center;
+    font-weight: 500;
+}

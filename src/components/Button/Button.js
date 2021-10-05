@@ -3,10 +3,14 @@ import React from "react";
 import "./Button.css";
 
 function Button(props) {
-    const { icon, label, type, big } = props;
+    const { icon, label, type, big, small, lite, selected } = props;
 
     return (
-        <div className={`btn ${type || ""} ${big ? "big" : ""}`}>
+        <div
+            className={`btn ${type || ""} ${selected ? "selected" : ""} ${
+                big ? "big" : small ? "small" : ""
+            } ${lite ? "lite" : ""}`}
+        >
             {icon && React.createElement(icon, { className: "btn-icon" })}
             <div className="btn-lbl">{label}</div>
         </div>

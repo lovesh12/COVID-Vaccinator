@@ -60,7 +60,7 @@ function Home(props) {
                     arcu. Maecenas quis facilisis mauris, aliquet amet pretium.
                 </p>
             </PageNormal>
-            <PageHighlight className={"page-highlight2 vaccine-steps"}>
+            <PageHighlight className={"vaccine-steps"} lite>
                 <h2>Getting vaccinated is simpler than even</h2>
                 <div className="vaccination-steps">
                     <VaccinationStep
@@ -100,7 +100,7 @@ function Home(props) {
                     />
                 </div>
             </PageNormal>
-            <PageHighlight className={"page-highlight2 vaccine-faqs"}>
+            <PageHighlight className={"vaccine-faqs"} lite>
                 <h2>Frequently Asked Questions</h2>
                 <div className="faqs">
                     <p>

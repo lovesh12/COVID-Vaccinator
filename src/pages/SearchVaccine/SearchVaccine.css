@@ -1,0 +1,66 @@
+.search-vaccine .page-content {
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-types {
+    display: flex;
+    font-size: 3vh;
+    font-weight: 500;
+
+    flex-wrap: wrap;
+}
+
+.search-type {
+    position: relative;
+
+    margin: 3vh 6vh;
+    cursor: pointer;
+}
+
+.search-type::after {
+    content: "";
+
+    position: absolute;
+    top: 105%;
+    left: 40%;
+
+    height: 0.6vh;
+    width: 0;
+
+    background-color: black;
+
+    border-radius: 5vh;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.search-type.selected::after, .search-type:hover::after {
+    width: 120%;
+    left: -10%;
+}
+
+.filter-results {
+    /*display: flex;*/
+}
+
+.result-filter-type {
+    display: inline-block;
+
+    position: relative;
+    margin: 1vh;
+    padding: 2vh 2vw;
+}
+
+.result-filter-type::after {
+    content: "";
+
+    position: absolute;
+    height: 100%;
+    width: 0.2vh;
+
+    top: 0;
+    left: 0;
+
+    background-color: #8F8F8F;
+}

@@ -1,0 +1,72 @@
+.card {
+    padding: 3vh 4vh;
+    border-radius: 2vh;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+
+    background-color: #fff;
+}
+
+.card-header, .card-body {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.horizontal-card {
+    display: flex;
+    align-items: center;
+
+    background: white;
+    border: solid 3px #4A50C0;
+    border-radius: 5vh;
+
+    padding: 2vh 3vw;
+
+    margin: 5vh 2vw;
+}
+
+.horizontal-card .card-icon {
+    margin-right: 4vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.horizontal-card .card-icon img {
+    width: 4.5vw;
+    height: 4.5vw;
+}
+
+.horizontal-card .card-left {
+    margin-right: 8vw;
+}
+
+.horizontal-card .card-left .left-top {
+    font-weight: 500;
+    font-size: 4vh;
+    text-align: center;
+}
+
+.horizontal-card .card-left .left-top.small {
+    font-weight: 500;
+    font-size: 3.4vh;
+}
+
+.horizontal-card .card-left .left-middle {
+    text-align: center;
+    color: #6A6A6A;
+}
+
+.horizontal-card .card-left .left-bottom {
+    font-size: 2vh;
+    text-align: center;
+}
+
+.horizontal-card .card-middle {
+    font-size: 2.6vh;
+    margin: auto;
+}
+
+.horizontal-card .card-right {
+    margin-left: auto;
+}

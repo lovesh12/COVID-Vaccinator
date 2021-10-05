@@ -21,3 +21,13 @@
 
     padding: 7vh 8vw;
 }
+
+.page-highlight.lite {
+    background-color: #F5F5FF;
+    color: #000;
+}
+
+.page-section {
+    display: flex;
+    justify-content: space-evenly;
+}

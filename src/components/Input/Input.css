@@ -1,0 +1,32 @@
+.input-group {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.input-wrapper {
+    margin: 3vh 5vh;
+    padding: 1vh 2vh;
+    border: solid 3px #4A50C0;
+    border-radius: 10vh;
+
+    box-sizing: border-box;
+}
+
+.input-wrapper input {
+    outline: none;
+    border: none;
+
+    background: transparent;
+
+    color: #4A50C0;
+    font-size: 2.5vh;
+    text-align: center;
+
+    width: 100%;
+}
+
+.input-wrapper input::placeholder {
+    color: #777CDA;
+}

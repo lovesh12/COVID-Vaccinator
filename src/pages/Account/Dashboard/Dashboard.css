@@ -1,0 +1,8 @@
+.dashboard .page-content {
+    display: block;
+}
+
+.dashboard h1 {
+    text-align: center;
+    font-size: 6vh;
+}
