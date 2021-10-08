@@ -9,13 +9,9 @@ import Reminders from "./Reminders/Reminders";
 import Certificates from "./Certificates/Certificates";
 
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useParams,
     useRouteMatch,
-    useLocation,
 } from "react-router-dom";
 
 const navBtns = [

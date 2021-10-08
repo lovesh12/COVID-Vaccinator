@@ -9,7 +9,6 @@ import { AiOutlineSearch } from "react-icons/all";
 import InputGroup from "../../components/Input/InputGroup";
 import Input from "../../components/Input/Input";
 import SearchResults from "./SearchResults/SearchResults";
-import PageHighlight from "../../components/Page/PageHighlight";
 
 function SearchVaccine(props) {
     return (
