@@ -30,3 +30,64 @@
 .input-wrapper input::placeholder {
     color: #777CDA;
 }
+
+.radio-btn-wrapper {
+    color: #ff3c3c;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 1.6vh;
+}
+
+.radio-btn {
+    user-select: none;
+
+    position: relative;
+    color: #fff;
+    width: 8vh;
+    height: 4vh;
+
+    background: #ff3c3c;
+    border-radius: 10vh;
+
+    display: flex;
+    align-items: center;
+
+    transition: all 0.2s ease-in-out;
+    margin: 0.7vh 1.7vh;
+    justify-self: flex-end;
+}
+
+.radio-btn::before {
+    content: '';
+    position: absolute;
+
+    width: 3vh;
+    height: 3vh;
+
+    display: inline-block;
+    left: 0.5vh;
+
+    border-radius: 100%;
+    background-color: #f1f1f1;
+    transition: all 0.2s ease-out;
+}
+
+.radio-btn.checked {
+    background: rgb(48, 209, 88);
+}
+
+.radio-btn.checked + .radio-lbl {
+    color: rgb(48, 209, 88) !important;
+}
+
+.radio-btn.checked::before {
+    left: calc(100% - 3.5vh);
+}
+
+.radio-lbl {
+    user-select: none;
+    font-size: 2.5vh;
+    font-weight: 500;
+}

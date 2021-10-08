@@ -15,7 +15,7 @@ function HorizontalCard(props) {
             </div>
             {middle && (
                 <div className="card-middle" style={{ color: color }}>
-                    {middle.toUpperCase()}
+                    {typeof middle === "string" ? middle.toUpperCase() : middle}
                 </div>
             )}
             <div className="card-right">{right}</div>
