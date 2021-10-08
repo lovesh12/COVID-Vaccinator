@@ -47,7 +47,8 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }).
  */
 app.get("/", homeController.index);
 app.post("/auth/google", userController.googleAuth);
-app.get("/account/setDoses", isAuthenticated, userController.setDoses);
+app.post("/logout", userController.logout);
+app.post("/account/setDoses", isAuthenticated, userController.setDoses);
 
 // All other GET requests not handled before will return our React app
 app.get("*", (req: Request, res: Response): void => {

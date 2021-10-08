@@ -5,15 +5,15 @@ import {User, UserDocument} from "../models/User";
 import {NativeError} from "mongoose";
 import {OAuth2Client} from "google-auth-library";
 
-const client = new OAuth2Client("CLIENT ID");
+const client = new OAuth2Client("972720935949-0a2n3a3475p6bru7o1rv64df1gh0mq2r.apps.googleusercontent.com");
 const CustomStrategy = passportCustom.Strategy;
 
-passport.serializeUser<any, any>((req, user: UserDocument, done) => {
+passport.serializeUser<any, any>((req, user: UserDocument, done: VerifiedCallback) => {
     done(undefined, user);
 });
 
-passport.deserializeUser((id, done) => {
-    User.findById(id, (err: NativeError, user: UserDocument) => done(err, user));
+passport.deserializeUser((user: UserDocument, done: VerifiedCallback) => {
+    User.findOne({email: user.email}, (err: NativeError, user: UserDocument) => done(err, user));
 });
 
 /**
@@ -24,14 +24,16 @@ passport.use("google", new CustomStrategy(async (req: Request, done: VerifiedCal
             const token = req.body.token;
             const ticket = await client.verifyIdToken({
                 idToken: token,
-                audience: "CLIENT ID"
+                audience: "972720935949-0a2n3a3475p6bru7o1rv64df1gh0mq2r.apps.googleusercontent.com"
             });
 
-            const user: { email?: string, name?: string, picture?: string } = ticket.getPayload();
+            const {email, name, picture}: { email?: string, name?: string, picture?: string } = ticket.getPayload();
+            const user = {email, name, picture};
 
-            User.findOne({email: user.email}, async (err: Error, userDoc: UserDocument): Promise<void> => {
+            User.findOne({email}, async (err: NativeError, userDoc: UserDocument): Promise<void> => {
+                console.log("Reaching here");
                 if (err) return done(err);
-                if (!user) await User.create(userDoc);
+                if (!userDoc) await User.create(user);
                 done(undefined, user); //This is the function in passport.authenticate cb
             });
 
