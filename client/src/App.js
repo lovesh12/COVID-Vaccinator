@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from 'react-query'
+
 import Home from "./pages/Home/Home.js";
 
 import "./App.css";
@@ -20,6 +22,8 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
+
+const queryClient = new QueryClient();
 
 const navBtns = [
     {
@@ -50,28 +54,30 @@ function NavbarComponent() {
 
 function App() {
     return (
-        <div className="App">
-            <Router>
-                <Switch>
-                    <Route path="/" exact>
-                        <NavbarComponent />
-                        <Home />
-                    </Route>
-                    <Route path="/search">
-                        <NavbarComponent />
-                        <SearchVaccine />
-                    </Route>
-                    <Route path="/stats">
-                        <NavbarComponent />
-                        <Statistics />
-                    </Route>
-                    <Route path="/account">
-                        <Account />
-                    </Route>
-                </Switch>
-            </Router>
-            <Footer />
-        </div>
+        <QueryClientProvider client={queryClient}>
+            <div className="App" id="app">
+                <Router>
+                    <Switch>
+                        <Route path="/" exact>
+                            <NavbarComponent />
+                            <Home />
+                        </Route>
+                        <Route path="/search">
+                            <NavbarComponent />
+                            <SearchVaccine />
+                        </Route>
+                        <Route path="/stats">
+                            <NavbarComponent />
+                            <Statistics />
+                        </Route>
+                        <Route path="/account">
+                            <Account />
+                        </Route>
+                    </Switch>
+                </Router>
+                <Footer />
+            </div>
+        </QueryClientProvider>
     );
 }
 

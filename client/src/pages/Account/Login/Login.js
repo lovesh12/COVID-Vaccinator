@@ -4,14 +4,14 @@ import "./Login.css";
 import Page from "../../../components/Page/Page";
 import Card from "../../../components/Card/Card";
 import PageContent from "../../../components/Page/PageContent";
-import Input from "../../../components/Input/Input";
-import Button from "../../../components/Button/Button";
 import ButtonGroup from "../../../components/Button/ButtonGroup";
 import heartHealth from "../../../HeartHealth.png";
 import { GoogleLogin } from 'react-google-login';
+import useRedirect from "../../../hooks/useRedirect";
 
 function Login(props) {
 
+    const redirectTo = useRedirect();
     const responseGoogle = async (response) => {
         const token = response.tokenId;
         let serverResponse = await fetch("/auth/google", {
@@ -23,7 +23,7 @@ function Login(props) {
             body: JSON.stringify({token})
         })
         serverResponse = await serverResponse.json()
-        console.log(serverResponse)
+        if (serverResponse.success) redirectTo("/account")
     }
 
     return (

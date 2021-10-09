@@ -9,7 +9,7 @@ function Button(props) {
         <div
             className={`btn ${type || ""} ${selected ? "selected" : ""} ${
                 big ? "big" : small ? "small" : ""
-            } ${lite ? "lite" : ""}`}
+            } ${lite ? "lite" : ""}`} onClick={props.onClick}
         >
             {icon && React.createElement(icon, { className: "btn-icon" })}
             <div className="btn-lbl">{label}</div>

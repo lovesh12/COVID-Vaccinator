@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#popup {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  font-family: "Poppins", sans-serif;
+}
+
+.popup {
+  position: absolute;
+  padding: 10px 20px;
+  min-width: 28vw;
+  max-width: 48vw;
+  background: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  border-radius: 20px;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  position: absolute;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
