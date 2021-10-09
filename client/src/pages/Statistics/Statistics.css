@@ -48,13 +48,38 @@
 
 .statistics .vaccination-categories {
     margin: 5vh 0;
+    flex-wrap: wrap;
 }
 
 .statistics .vaccination-categories h3 {
     font-weight: 500;
+    margin-bottom: 20px;
 }
 
 .statistics .more-stats h3 {
     text-align: center;
     font-weight: 500;
+}
+
+.statistics table {
+    font-size: 0.8em;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.statistics table > tr {
+    border: 1px solid gray;
+}
+
+.statistics table > tr > td:nth-child(2), .statistics table > tr > td:nth-child(3) {
+    text-align: center;
+}
+
+.statistics table > tr > td {
+    padding: 10px 0;
+}
+
+.statistics .table-stats {
+    max-height: 90vh;
+    overflow-y: scroll;
 }

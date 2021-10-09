@@ -1,0 +1,22 @@
+.dropdown--options {
+    position: absolute;
+    background: white;
+    left: -3px;
+    width: 100%;
+    border: solid 3px #4A50C0;
+    bottom: -5px;
+    height: 35vh;
+    overflow-y: scroll;
+    border-radius: 5px;
+    top: 105%;
+}
+
+.dropdown--option {
+    padding: 5px;
+}
+
+.dropdown {
+    width: 25vw !important;
+    position: relative;
+    border-radius: 5px;
+}

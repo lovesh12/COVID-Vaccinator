@@ -32,11 +32,6 @@ function Certificates(props) {
         }
     )
 
-    useEffect(() => {
-        console.log(vaccinationStatus)
-        console.log(isSuccess)
-    }, [vaccinationStatus, isSuccess])
-
     return (
         <Page className={"certificates"}>
             <UnAuthorized error={error} />
