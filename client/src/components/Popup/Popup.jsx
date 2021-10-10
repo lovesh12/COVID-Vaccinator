@@ -9,7 +9,7 @@ function Popup({ children, open }) {
     return () => {
       body.style.overflow = "unset";
     }
-  }, []);
+  });
 
   return (
     <>

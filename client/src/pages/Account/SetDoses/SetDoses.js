@@ -1,5 +1,4 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
 import {useMutation} from "react-query";
 
 import Page from "../../../components/Page/Page";
@@ -11,7 +10,6 @@ import InputSwitch from "../../../components/Input/InputSwitch";
 import Button from "../../../components/Button/Button";
 import ButtonGroup from "../../../components/Button/ButtonGroup";
 import MutationAlert from "../../../components/Alerts/MutationAlert";
-import ErrorAlert from "../../../components/Alerts/ErrorAlert";
 import useFetchDoses from "../../../hooks/useFetchDoses";
 import useRedirect from "../../../hooks/useRedirect";
 import UnAuthorized from "../../../components/UnAuthorized";

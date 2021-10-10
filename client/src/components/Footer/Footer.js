@@ -41,8 +41,8 @@ function Footer(props) {
     return (
         <PageHighlight className={"footer"}>
             <div className="footer-sections">
-                {footerSections.map((footerSection) => (
-                    <FooterSection
+                {footerSections.map((footerSection, i) => (
+                    <FooterSection key={i}
                         heading={footerSection.heading}
                         links={footerSection.links}
                     />

@@ -2,46 +2,50 @@ import React from "react";
 
 import "./CenterVaccineDetails.css";
 import Button from "../../../components/Button/Button";
-import ButtonGroup from "../../../components/Button/ButtonGroup";
 import VaccineDetailCard from "./VaccineDetailCard";
+import genWeekWithDates from "../../../util/genWeekWithDates";
 
 function CenterVaccineDetails(props) {
     const { name, address, dayDetails } = props;
 
-    const totalDosesAvailable = dayDetails.reduce(
-        (prev, curr) =>
-            prev.dose1 ||
-            0 + prev.dose2 ||
-            0 + curr.dose1 ||
-            0 + curr.dose2 ||
-            0
-    );
-
-    console.log(totalDosesAvailable);
+    const dosesDate = genWeekWithDates(dayDetails)
+    console.log(dosesDate)
+    console.log(name)
 
     return (
         <div className={"center-vaccine-details"}>
             <h3>{name}</h3>
             <p>{address}</p>
-
-            <ButtonGroup center>
-                {totalDosesAvailable <= 0 && (
-                    <Button
-                        label={"Notify Me When Available"}
-                        type={"bordered"}
-                        lite
-                    />
-                )}
-            </ButtonGroup>
             <div className="vaccine-day-cards">
-                {dayDetails.map((dayData) => (
-                    <VaccineDetailCard
-                        heading={dayData.date}
-                        label={dayData.name}
-                        description={dayData.age}
-                        dose1={dayData.dose1}
-                        dose2={dayData.dose2}
-                    />
+                {Object.values(dosesDate).map((dayData, i) => (
+                    <div className="vaccine-day-cards--type" key={i}>
+                        {dayData.covishield &&
+                            <VaccineDetailCard
+                                heading={dayData.covishield.date}
+                                label={dayData.covishield.name}
+                                description={dayData.covishield.min_age_limit}
+                                vaccine={"Covishield"}
+                                dose1={dayData.covishield.available_capacity_dose1}
+                                dose2={dayData.covishield.available_capacity_dose2}
+                            />
+                        }
+                        {dayData.covaxin &&
+                        <VaccineDetailCard
+                            label={dayData.covaxin.name}
+                            description={dayData.covaxin.min_age_limit}
+                            vaccine={"Covaxin"}
+                            dose1={dayData.covaxin.available_capacity_dose1}
+                            dose2={dayData.covaxin.available_capacity_dose2}
+                        />
+                        }
+                        {!dayData.covaxin && !dayData.covishield &&
+                            <div className={"vaccine-detail-card"}>
+                                <div className="card-heading">{dayData.date}</div>
+                                <Button label={"Notify Me"} type={"bordered"} lite/>
+                            </div>
+                        }
+                    </div>
+
                 ))}
             </div>
         </div>

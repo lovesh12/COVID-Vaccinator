@@ -8,12 +8,20 @@ import reminderImg from "../../../Reminders.png";
 import Button from "../../../components/Button/Button";
 
 import { FcEmptyTrash, AiFillInfoCircle } from "react-icons/all";
+import ButtonGroup from "../../../components/Button/ButtonGroup";
+import useRedirect from "../../../hooks/useRedirect";
 
 function Reminders(props) {
+
+    const redirectTo = useRedirect();
+
     return (
         <Page className={"reminders"}>
             <PageContent>
                 <h1>Your Reminders</h1>
+                <ButtonGroup center>
+                    <Button label={"Configure Settings"} type={"inverted"} onClick={() => redirectTo("/account/setDoses")} />
+                </ButtonGroup>
                 <p className={"reminder-noti"}>
                     <AiFillInfoCircle className={"reminder-noti-icon"} />
                     Reminders can be set from search vaccine page, it will

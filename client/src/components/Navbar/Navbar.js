@@ -13,8 +13,8 @@ function Navbar(props) {
         <div className={"navbar"}>
             <h1>{heading}</h1>
             <ButtonGroup className="nav-btns">
-                {navBtns.map((btn) => (
-                    <Link to={btn.link}>
+                {navBtns.map((btn, i) => (
+                    <Link to={btn.link} key={i}>
                         <Button
                             selected={location.pathname === btn.link}
                             icon={btn.icon}

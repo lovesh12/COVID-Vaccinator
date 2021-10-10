@@ -8,8 +8,8 @@ function FooterSection(props) {
             <h2>{heading}</h2>
 
             <div className="links">
-                {links.map((link) => (
-                    <a href={link.url}>{link.label}</a>
+                {links.map((link, i) => (
+                    <a href={link.url} key={i}>{link.label}</a>
                 ))}
             </div>
         </div>

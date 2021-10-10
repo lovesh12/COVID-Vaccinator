@@ -17,13 +17,12 @@ function Dropdown(props) {
             style={{ width: width || "11vw", ...pStyle }}
             onClick={toggle}
         >
-            <p className="dropdown--selected">{selected ? options[selected][labelKey] : label}</p>
+            <p className="dropdown--selected">{selected > -1 ? options[selected][labelKey] : label}</p>
             {shown &&
             <div className="dropdown--options">
-                {options.map((option) => <p className="dropdown--option" onClick={() => onChange(option[idKey])}>{option[labelKey]}</p>)}
+                {options.map((option, i) => <p className="dropdown--option" key={i} onClick={() => onChange(option[idKey])}>{option[labelKey]}</p>)}
             </div>
             }
-
         </div>
     );
 }

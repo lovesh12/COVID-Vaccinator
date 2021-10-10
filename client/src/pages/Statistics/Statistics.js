@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 import "./Statistics.css";
 import PageContent from "../../components/Page/PageContent";
@@ -7,9 +7,6 @@ import Page from "../../components/Page/Page";
 import Card from "../../components/Card/Card";
 import PageSection from "../../components/Page/PageSection";
 import ButtonGroup from "../../components/Button/ButtonGroup";
-import Button from "../../components/Button/Button";
-import Input from "../../components/Input/Input";
-import { AiOutlineSearch } from "react-icons/all";
 
 import syringeImg from "../../Syringe2.png";
 import CardHeader from "../../components/Card/CardHeader";
@@ -22,69 +19,30 @@ import ByGender from "./Charts/ByGender";
 import ByVaccine from "./Charts/ByVaccine";
 import ByAge from "./Charts/ByAge";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import states from "../../config/states";
-// import states from "../../config/states";
+import useStateDistrictLists from "../../hooks/useStateDistrictLists";
 
 function Statistics(props) {
 
-    const [state, setState] = useState(0);
-    const [district, setDistrict] = useState(0);
+    const [state, district, stateList, districtList, sIsSuccess, dIsSuccess, changeState, changeDistrict] = useStateDistrictLists();
 
-    const [stateList, setStateList] = useState([]);
-    const [districtList, setDistrictList] = useState([])
-    const [centreList, setCentreList] = useState([]);
-
-    const { error, isSuccess, data } = useQuery(['statistics', state, district], () =>
-            fetch(`https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=${state ? state : ""}&district_id=${district ? district : ""}&date=${getDate()}`).then(res => res.json()).then(async body => {
+    const { isSuccess, data } = useQuery(['statistics', state, district], () =>
+            fetch(`https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=${state.id ? state.id : ""}&district_id=${district.id ? district.id : ""}&date=${getDate(1)}`).then(res => res.json()).then(async body => {
                 console.log(body)
-                if (state === 0) {
-                    console.log("Changing statelist")
-                    setStateList(body.getBeneficiariesGroupBy)
-                }
-                else if (district === 0) {
-                    console.log("Changing districtlist")
-                    setDistrictList(body.getBeneficiariesGroupBy)
-                }
-                else if (district !== 0 && state !== 0) {
-                    console.log("Changing centrelist")
-                    setCentreList(body.getBeneficiariesGroupBy)
-                }
                 return body;
             }),
         {
             retry: false,
             refetchOnWindowFocus: false,
-            refetchInterval: true,
+            refetchInterval: false,
             keepPreviousData: true
         }
     )
 
-    const changeState = (id) => {
-        setDistrict(0);
-        stateList.forEach((lState, i) => {
-            if (lState.state_id === id) {
-                setState(i);
-                return;
-            }
-        })
-
-    }
-
-    const changeDistrict = (id) => {
-        console.log("district " + id)
-        districtList.forEach((lDistrict, i) => {
-            if (lDistrict.district_id === id) {
-                console.log(lDistrict)
-                setDistrict(i)
-                return;
-            }
-        })
-    }
 
     return (
         <Page className={"statistics"}>
             <PageContent>
-                {isSuccess &&
+                {isSuccess && sIsSuccess && dIsSuccess &&
                 <>
                     <PageSection>
                         <Card className={"short-stats"}>
@@ -101,8 +59,8 @@ function Statistics(props) {
                         </Card>
                     </PageSection>
                     <ButtonGroup className={"search-btns"} center>
-                        <Dropdown label={"Select State"} options={stateList} selected={state} onChange={changeState} labelKey={"title"} idKey={"state_id"}/>
-                        <Dropdown label={"Select District"} options={districtList} selected={district} onChange={changeDistrict} labelKey={"title"} idKey={"district_id"} />
+                        <Dropdown label={"Select State"} options={stateList} selected={state.i} onChange={changeState} labelKey={"state_name"} idKey={"state_id"}/>
+                        <Dropdown label={"Select District"} options={districtList} selected={district.i} onChange={changeDistrict} labelKey={"district_name"} idKey={"district_id"}/>
                     </ButtonGroup>
                     <Card className={"total-doses"}>
                         <CardHeader>

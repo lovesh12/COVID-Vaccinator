@@ -78,6 +78,9 @@ const dummyDayDetails = [
 ];
 
 function SearchResults(props) {
+
+    const {centers, state} = props;
+
     return (
         <>
             <PageNormal className={"search-results"}>
@@ -95,31 +98,13 @@ function SearchResults(props) {
                 </div>
             </PageNormal>
             <PageHighlight className={"center-vaccine-details-list"} lite>
-                <CenterVaccineDetails
-                    name={"CENTER 1 NAME FULL NAME"}
-                    address={"Center 1 Full Address"}
-                    dayDetails={dummyDayDetails}
-                />
-                <CenterVaccineDetails
-                    name={"CENTER 1 NAME FULL NAME"}
-                    address={"Center 1 Full Address"}
-                    dayDetails={dummyDayDetails}
-                />
-                <CenterVaccineDetails
-                    name={"CENTER 1 NAME FULL NAME"}
-                    address={"Center 1 Full Address"}
-                    dayDetails={dummyDayDetails}
-                />
-                <CenterVaccineDetails
-                    name={"CENTER 1 NAME FULL NAME"}
-                    address={"Center 1 Full Address"}
-                    dayDetails={dummyDayDetails}
-                />
-                <CenterVaccineDetails
-                    name={"CENTER 1 NAME FULL NAME"}
-                    address={"Center 1 Full Address"}
-                    dayDetails={dummyDayDetails}
-                />
+                {centers.map((center) => (
+                    <CenterVaccineDetails
+                        name={center.name}
+                        address={`${center.address}, ${center.district_name}, ${state}, ${center.pincode}`}
+                        dayDetails={center.sessions}
+                    />
+                ))}
             </PageHighlight>
         </>
     );

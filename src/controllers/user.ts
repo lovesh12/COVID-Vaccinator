@@ -1,13 +1,7 @@
-import { Request, Response } from "express";
+import {Request, Response} from "express";
 import passport from "passport";
 import {User, UserDocument} from "../models/User";
-
-export interface DosesInfo {
-    d1: boolean,
-    d2: boolean,
-    d1Date: string,
-    d2Date: string,
-}
+import {getDose2DueDate, ReminderTypes, utilAddReminder} from "./reminders";
 
 export interface DoseInfo {
     id: number;
@@ -63,6 +57,8 @@ export const setDoses = async (req: Request, res: Response): Promise<void> => {
     if (dosesData["1"]) {
         console.log("Saving 1");
         await User.updateOne({email}, {d1: dosesData["1"].enabled, d1Date: dosesData["1"].date });
+        const d2DueDate = getDose2DueDate(dosesData["1"].date, "covishield");
+        await utilAddReminder(req.user as UserDocument, {type: ReminderTypes.Dose2Due, date: d2DueDate, time: "8", message: "Hello"});
     }
     if (dosesData["2"]) {
         console.log("Saving 2");

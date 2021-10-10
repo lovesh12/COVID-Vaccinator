@@ -3,13 +3,13 @@ import React from "react";
 import Button from "../../../components/Button/Button";
 
 function VaccineDetailCard(props) {
-    const { heading, label, description, dose1, dose2 } = props;
+    const { heading, label, description, vaccine, dose1, dose2 } = props;
 
     const totalDoes = dose1 + dose2;
 
     return (
         <div className={"vaccine-detail-card"}>
-            <div className="card-heading">{heading}</div>
+            {heading && <div className="card-heading">{heading}</div>}
             <div className="card-label">{label}</div>
 
             <div className="dose-count">
@@ -27,8 +27,8 @@ function VaccineDetailCard(props) {
                     <div className="dose-booked">Booked</div>
                 )}
             </div>
-
-            <div className="card-description">{description}</div>
+            <div className="card-description">{vaccine.toUpperCase()}</div>
+            <div className="card-description">{description+" & Above"}</div>
             {totalDoes > 0 && (
                 <Button label={"Set Reminder"} lite type={"bordered"} />
             )}

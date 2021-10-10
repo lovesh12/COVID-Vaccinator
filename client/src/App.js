@@ -44,7 +44,7 @@ const navBtns = [
     {
         icon: RiAccountBoxLine,
         label: "Account",
-        link: "/account",
+        link: "/account/login",
     },
 ];
 

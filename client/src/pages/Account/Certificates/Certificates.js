@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import Page from "../../../components/Page/Page";
 import PageContent from "../../../components/Page/PageContent";
 import HorizontalCard from "../../../components/Card/HorizontalCard";
