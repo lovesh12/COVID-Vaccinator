@@ -7,11 +7,8 @@ import Reminders from "./Reminders/Reminders";
 import Certificates from "./Certificates/Certificates";
 import SetDoses from "./SetDoses/SetDoses";
 
-import {
-    Switch,
-    Route,
-    useRouteMatch,
-} from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
+import ReminderVertification from "./ReminderVerification/ReminderVertification";
 
 const navBtns = [
     {
@@ -33,6 +30,11 @@ const navBtns = [
         icon: BiHome,
         label: "Reminders",
         link: "/account/reminders",
+    },
+    {
+        icon: BiHome,
+        label: "Reminder Details",
+        link: "/account/reminderDetails",
     },
 ];
 
@@ -57,6 +59,9 @@ function Account(props) {
                 </Route>
                 <Route path={`${path}/certificates`}>
                     <Certificates />
+                </Route>
+                <Route path={`${path}/reminderDetails`}>
+                    <ReminderVertification />
                 </Route>
             </Switch>
         </div>
