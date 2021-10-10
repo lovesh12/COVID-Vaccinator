@@ -64,3 +64,8 @@
 
     background-color: #8F8F8F;
 }
+
+.search-results-pagecontent {
+    padding-top: 0;
+    margin-top: -5vh;
+}
