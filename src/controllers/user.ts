@@ -11,6 +11,11 @@ export interface DoseInfo {
     date: string;
 }
 
+export const enum VaccineType {
+    COVISHIELD,
+    COVAXIN,
+}
+
 export const utilTelegramDone = (updateId: string): void => {
     axios.get(
         "https://api.telegram.org/bot2018543506:AAG_aUhCSosvCXLkRGCXszid1SkNB7XvCfc/getUpdates?offset=" +
@@ -75,17 +80,18 @@ export const getDoses = async (req: Request, res: Response): Promise<void> => {
 export const setDoses = async (req: Request, res: Response): Promise<void> => {
     const { email } = req.user as UserDocument;
     const dosesData = req.body.doses;
+    const vaccine: VaccineType = req.body.vaccine;
     if (dosesData["1"]) {
         console.log("Saving 1");
         await User.updateOne(
             { email },
             { d1: dosesData["1"].enabled, d1Date: dosesData["1"].date }
         );
-        const d2DueDate = getDose2DueDate(dosesData["1"].date, "covishield");
+        const d2DueDate = getDose2DueDate(dosesData["1"].date, vaccine);
         await utilAddReminder(req.user as UserDocument, {
             type: ReminderTypes.Dose2Due,
             date: d2DueDate,
-            message: "Hello",
+            message: `Your second dose for is due on ${d2DueDate}`,
         });
     }
     if (dosesData["2"]) {

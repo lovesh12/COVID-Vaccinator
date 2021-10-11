@@ -6,7 +6,7 @@ function MutationAlert(props) {
 
     const resetMutation = () => {
         mutation.reset();
-        onSuccess();
+        onSuccess && onSuccess();
     };
 
     return (

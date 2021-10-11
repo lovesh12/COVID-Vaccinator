@@ -1,8 +1,10 @@
+import { VaccineType } from "../controllers/user";
+
 interface IvaccineDueDays {
-    [key: string]: number,
+    [key: number]: number;
 }
 
 export const vaccineDueDays: IvaccineDueDays = {
-    "covaxin": 84,
-    "covishield": 52,
+    [VaccineType.COVISHIELD]: 84,
+    [VaccineType.COVAXIN]: 52,
 };

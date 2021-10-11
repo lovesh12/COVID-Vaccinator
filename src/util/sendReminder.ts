@@ -97,7 +97,7 @@ export const scanReminders = (): void => {
                                         break;
                                     case ReminderTypes.Notify:
                                         checkAndNotify(
-                                            reminder.centre,
+                                            reminder.center,
                                             reminder.date,
                                             user.telegram,
                                             user.mobile,

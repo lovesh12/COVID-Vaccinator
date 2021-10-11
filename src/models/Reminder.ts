@@ -7,7 +7,7 @@ export type ReminderDocument = mongoose.Document & {
     type: ReminderTypes;
     date: string;
     message: string;
-    centre?: number;
+    center?: number;
 };
 
 const reminderSchema = new mongoose.Schema<ReminderDocument>({
@@ -15,7 +15,7 @@ const reminderSchema = new mongoose.Schema<ReminderDocument>({
     type: Number,
     date: String,
     message: String,
-    centre: Number,
+    center: Number,
 });
 
 export const Reminder = mongoose.model<ReminderDocument>(

@@ -178,6 +178,7 @@ function SearchResults(props) {
                         <CenterVaccineDetails
                             name={center.name}
                             address={`${center.address}, ${center.district_name}, ${state}, ${center.pincode}`}
+                            id={center.center_id}
                             dayDetails={filteredSessions}
                         />
                     );

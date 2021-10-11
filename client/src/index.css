@@ -12,6 +12,15 @@ code {
     monospace;
 }
 
+body {
+  overflow: hidden;
+}
+
+#root {
+  overflow: auto;
+  height: 100vh;
+}
+
 #popup {
   position: absolute;
   display: flex;

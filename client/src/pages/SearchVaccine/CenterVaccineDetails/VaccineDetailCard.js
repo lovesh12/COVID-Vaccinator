@@ -3,7 +3,8 @@ import React from "react";
 import Button from "../../../components/Button/Button";
 
 function VaccineDetailCard(props) {
-    const { heading, label, description, vaccine, dose1, dose2 } = props;
+    const { heading, label, description, vaccine, dose1, dose2, addReminder } =
+        props;
 
     const totalDoes = dose1 + dose2;
 
@@ -28,9 +29,14 @@ function VaccineDetailCard(props) {
                 )}
             </div>
             <div className="card-description">{vaccine.toUpperCase()}</div>
-            <div className="card-description">{description+" & Above"}</div>
+            <div className="card-description">{description + " & Above"}</div>
             {totalDoes > 0 && (
-                <Button label={"Set Reminder"} lite type={"bordered"} />
+                <Button
+                    label={"Set Reminder"}
+                    lite
+                    type={"bordered"}
+                    onClick={addReminder}
+                />
             )}
         </div>
     );

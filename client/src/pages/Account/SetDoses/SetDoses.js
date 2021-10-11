@@ -1,5 +1,5 @@
-import React from "react";
-import {useMutation} from "react-query";
+import React, { useState } from "react";
+import { useMutation } from "react-query";
 
 import Page from "../../../components/Page/Page";
 import PageContent from "../../../components/Page/PageContent";
@@ -13,11 +13,21 @@ import MutationAlert from "../../../components/Alerts/MutationAlert";
 import useFetchDoses from "../../../hooks/useFetchDoses";
 import useRedirect from "../../../hooks/useRedirect";
 import UnAuthorized from "../../../components/UnAuthorized";
+import Dropdown from "../../../components/Dropdown/Dropdown";
+
+const vaccineList = [
+    { id: 1, name: "COVISHIELD" },
+    { id: 2, name: "COVAXIN" },
+];
 
 function SetDoses(props) {
-
     const [data, setData, isSuccess, error] = useFetchDoses();
+    const [vaccine, setVaccine] = useState({ i: 0, id: 1 });
     const redirectTo = useRedirect();
+
+    const changeVaccine = (id) => {
+        setVaccine({ i: id - 1, id });
+    };
 
     const handleDoseDateChange = (doseId, e) => {
         setData({
@@ -34,8 +44,8 @@ function SetDoses(props) {
     };
 
     const saveDosesInfo = () => {
-        SaveDoses.mutate(data)
-    }
+        SaveDoses.mutate(data);
+    };
 
     const SaveDoses = useMutation((data) => {
         return new Promise(async (resolve, reject) => {
@@ -43,24 +53,33 @@ function SetDoses(props) {
                 method: "POST",
                 credentials: "include",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({doses: data})
-            })
+                body: JSON.stringify({ doses: data, vaccine: vaccine.i }),
+            });
             res = await res.json();
-            if (!res.success) reject(new Error(res.error))
+            if (!res.success) reject(new Error(res.error));
             resolve(data);
-        })
-    })
-
+        });
+    });
 
     return (
         <Page className={"dashboard"}>
             <UnAuthorized error={error} />
             <PageContent>
                 <h1>Your Doses</h1>
+                <ButtonGroup center>
+                    <Dropdown
+                        label={"Select Vaccine"}
+                        options={vaccineList}
+                        selected={vaccine.i}
+                        onChange={changeVaccine}
+                        labelKey={"name"}
+                    />
+                </ButtonGroup>
+
                 {isSuccess &&
-                Object.values(data).map((dose, i) => (
+                    Object.values(data).map((dose, i) => (
                         <HorizontalCard
                             key={i}
                             color={"#00982B"}
@@ -95,11 +114,19 @@ function SetDoses(props) {
                                 />
                             }
                         />
-                    ))
-                }
+                    ))}
                 <ButtonGroup center>
-                    <Button label={"Save"} type={"inverted"} onClick={saveDosesInfo} big />
-                    <MutationAlert mutation={SaveDoses} successMsg={"Successfully saved your doses"} onSuccess={() => redirectTo("/account")}/>
+                    <Button
+                        label={"Save"}
+                        type={"inverted"}
+                        onClick={saveDosesInfo}
+                        big
+                    />
+                    <MutationAlert
+                        mutation={SaveDoses}
+                        successMsg={"Successfully saved your doses"}
+                        onSuccess={() => redirectTo("/account")}
+                    />
                 </ButtonGroup>
             </PageContent>
         </Page>

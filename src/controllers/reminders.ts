@@ -4,6 +4,7 @@ import { Reminder } from "../models/Reminder";
 import { vaccineDueDays } from "../config/data";
 import { getDateString } from "../util/getDateString";
 import { scanReminders } from "../util/sendReminder";
+import { VaccineType } from "./user";
 
 export enum ReminderTypes {
     Dose2Due,
@@ -16,15 +17,14 @@ export interface IReminderData {
     type: ReminderTypes;
     date: string;
     message: string;
-    centre?: number;
+    center?: number;
 }
 
 export const getDose2DueDate = (
     dose1Date: string,
-    vaccineType: string
+    vaccineType: VaccineType
 ): string => {
     const d = new Date(dose1Date);
-    vaccineType = vaccineType.toLowerCase();
     d.setDate(d.getDate() + vaccineDueDays[vaccineType]);
     return getDateString(d);
 };
@@ -33,11 +33,19 @@ export const utilAddReminder = async (
     user: UserDocument,
     reminderData: IReminderData
 ): Promise<[boolean, string]> => {
+    const alreadyReminder = await Reminder.findOne({
+        email: user.email,
+        type: reminderData.type,
+        date: reminderData.date,
+        center: reminderData.center,
+    });
+    if (alreadyReminder) return [false, "Reminder already added"];
     const res = await Reminder.create({
         email: user.email,
         type: reminderData.type,
         date: reminderData.date,
         message: reminderData.message,
+        center: reminderData.center,
     });
     console.log(res);
     return [true, "Added reminder successfully"];
@@ -64,10 +72,10 @@ export const addReminder = async (
         type: req.body.type,
         date: req.body.date,
         message: req.body.message,
-        centre: req.body.centre,
+        center: req.body.center,
     });
     res.status(success ? 200 : 400);
-    res.json({ success, message });
+    res.json(success ? { success, message } : { success, error: message });
 };
 
 /**
