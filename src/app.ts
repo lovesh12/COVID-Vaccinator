@@ -11,6 +11,7 @@ import * as homeController from "./controllers/home";
 import * as userController from "./controllers/user";
 import { isAuthenticated } from "./config/passport";
 import * as reminderController from "./controllers/reminders";
+import { getCertificate } from "./controllers/user";
 
 //Create express app
 const app = express();
@@ -93,6 +94,7 @@ app.get(
     isAuthenticated,
     userController.getReminderConfig
 );
+app.get("/account/certificate", isAuthenticated, getCertificate);
 
 //ONLY FOR TESTING PURPOSE
 app.post("/triggerScanReminders", reminderController.triggerScanReminders);
