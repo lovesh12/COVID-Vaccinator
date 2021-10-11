@@ -77,7 +77,16 @@ Feature | 13 | Activate footer | Completed
 Data | 14 | Add FAQs and Home page data | Completed
 
 ## Pre Requisites
--- APIs here
+- Google API - Login using google
+- Cowin API - Get center/statistics data
+- Telegram API - To send telegram reminders
+- Vonage API - To send SMS reminders
+
+## Build and run the project
+```
+npm run build
+npm start
+```
 
 ## Technologies
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
@@ -109,8 +118,24 @@ Data | 14 | Add FAQs and Home page data | Completed
 ### Account Login
 ![](https://imgur.com/dr6nODy.png)
 
+### Manage Doses
+![image](https://user-images.githubusercontent.com/24871407/136822254-b0ebae66-33bb-4087-a8fe-94937748bc04.png)
+
+### Manage Certificates
+![image](https://user-images.githubusercontent.com/24871407/136822301-f92e6257-90d5-4b4d-b18b-066800038cad.png)
+
 ### Manage Reminders
 ![](https://imgur.com/wEh2sqx.png)
 
 ### Reminder Settings
 ![](https://imgur.com/MYFikCr.png)
+
+#### Telegram Reminder
+![image](https://user-images.githubusercontent.com/24871407/136822926-21a27814-69b8-4a4c-bf29-2a292ca0dfab.png)
+
+#### SMS Reminder
+![image](https://user-images.githubusercontent.com/24871407/136822947-c2c146f6-2195-409f-b5f1-1d68a4eb2447.png)
+
+### Vaccine Certificate
+
+
