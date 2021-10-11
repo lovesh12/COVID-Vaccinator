@@ -1,4 +1,8 @@
 import app from "./app";
+import {
+    intervalCheckNSendReminders,
+    scanReminders,
+} from "./util/sendReminder";
 
 const server = app.listen(app.get("port"), () => {
     console.log(
@@ -6,6 +10,7 @@ const server = app.listen(app.get("port"), () => {
         app.get("port"),
         app.get("env")
     );
+    intervalCheckNSendReminders();
 });
 
 export default server;

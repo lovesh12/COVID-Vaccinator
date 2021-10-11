@@ -15,6 +15,9 @@
     "build": "npm run build-react && npm run build-ts && npm run lint && npm run copy-static-assets",
     "copy-static-assets": "ts-node copyStaticAssets.ts"
   },
+  "prettier": {
+    "tabWidth": 4
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lovesh12/COVID-Vaccinator.git"
@@ -26,6 +29,8 @@
   },
   "homepage": "https://github.com/lovesh12/COVID-Vaccinator#readme",
   "dependencies": {
+    "@vonage/server-sdk": "^2.10.10",
+    "axios": "^0.22.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
