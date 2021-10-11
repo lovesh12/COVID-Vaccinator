@@ -155,3 +155,18 @@
 .home .vaccine-types {
     flex-wrap: wrap;
 }
+
+.home .faq-wrapper {
+    user-select: none;
+    cursor: pointer;
+}
+
+.home .faq-question {
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.home .faq-question-answer {
+    font-weight: 300;
+    font-size: 2vh !important;
+}

@@ -1,23 +1,22 @@
 import React from "react";
 import SearchTypeHeaderBtn from "./SearchTypeHeaderBtn";
+import { Link, useLocation } from "react-router-dom";
 
 function SearchTypeHeaderBtns(props) {
-    const { selected, setSelected, btnValues } = props;
+    const { btnValues } = props;
 
-    const handleClick = (id) => {
-        setSelected(id);
-    };
+    const location = useLocation();
 
     return (
         <div className="search-types">
             {btnValues.map((btn, i) => (
-                <SearchTypeHeaderBtn
-                    key={i}
-                    id={i}
-                    selectedId={selected}
-                    label={btn}
-                    onClick={handleClick}
-                />
+                <Link key={i} to={btn.link}>
+                    <SearchTypeHeaderBtn
+                        id={i}
+                        selected={location.pathname === btn.link}
+                        label={btn.name}
+                    />
+                </Link>
             ))}
         </div>
     );

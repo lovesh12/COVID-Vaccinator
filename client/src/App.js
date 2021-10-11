@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import Home from "./pages/Home/Home.js";
 
@@ -17,11 +17,7 @@ import Footer from "./components/Footer/Footer";
 import SearchVaccine from "./pages/SearchVaccine/SearchVaccine";
 import Statistics from "./pages/Statistics/Statistics";
 import Account from "./pages/Account/Account";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -74,8 +70,8 @@ function App() {
                             <Account />
                         </Route>
                     </Switch>
+                    <Footer />
                 </Router>
-                <Footer />
             </div>
         </QueryClientProvider>
     );
