@@ -84,6 +84,10 @@ Data | 14 | Add FAQs and Home page data | Completed
 
 ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![WebStorm](https://img.shields.io/badge/webstorm-143?style=for-the-badge&logo=webstorm&logoColor=white&color=black)
 
+# Contributors
+### [Lovesh Verma](https://github.com/lovesh12)
+### [Luckshya Verma](https://github.com/Luckshya)
+
 ## Screenshots
 ### Home Page
 ![Home Page](https://i.imgur.com/8VtHDbb.png "Home Page")
