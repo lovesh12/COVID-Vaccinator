@@ -3,6 +3,8 @@ import passport from "passport";
 import { User, UserDocument } from "../models/User";
 import { getDose2DueDate, ReminderTypes, utilAddReminder } from "./reminders";
 import axios from "axios";
+import createCertificate from "../util/createCertificate";
+import stream from "stream";
 
 export interface DoseInfo {
     id: number;
@@ -187,4 +189,30 @@ export const addMobile = async (req: Request, res: Response): Promise<void> => {
 export const getReminderConfig = (req: Request, res: Response): void => {
     const { telegram, email, mobile } = req.user as UserDocument;
     res.json({ success: true, telegram, mobile, email });
+};
+
+/**
+ * Get vaccination Certificate
+ * @route /GET /account/certificate
+ */
+
+export const getCertificate = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    const { name, email, picture, d1, d2 } = req.user as UserDocument;
+    let vaccinationStatus;
+    if (d2) vaccinationStatus = "Fully Vaccinated";
+    else if (d1) vaccinationStatus = "Partially Vaccinated";
+    else vaccinationStatus = "Not Vaccinated";
+    const pdfBuffer = await createCertificate(
+        name,
+        email,
+        picture,
+        vaccinationStatus
+    );
+    const bufferStream = new stream.PassThrough();
+    bufferStream.end(Buffer.from(pdfBuffer));
+    res.contentType("application/pdf");
+    bufferStream.pipe(res);
 };
