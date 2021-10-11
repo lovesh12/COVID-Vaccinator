@@ -62,7 +62,8 @@ function Certificates(props) {
                                     label={"Download Certificate"}
                                     type={"inverted"}
                                     onClick={() =>
-                                        redirectTo("/account/certificate")
+                                        (window.location =
+                                            "/account/certificate")
                                     }
                                 />
                             )

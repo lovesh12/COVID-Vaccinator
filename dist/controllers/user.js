@@ -121,7 +121,7 @@ exports.certificatesStatus = certificatesStatus;
 const verifyTelegram = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const username = req.body.username;
     const { email } = req.user;
-    const { data } = yield axios_1.default.get("https://api.telegram.org/bot2018543506:AAG_aUhCSosvCXLkRGCXszid1SkNB7XvCfc/getUpdates");
+    const { data } = yield axios_1.default.get(`https://api.telegram.org/${process.env.TELEGRAMBOT_TOKEN}/getUpdates`);
     console.log(data);
     let found = false;
     data.result.forEach((r) => {

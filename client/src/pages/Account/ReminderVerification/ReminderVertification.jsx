@@ -80,14 +80,20 @@ function ReminderVertification(props) {
                         <span>
                             <AiFillInfoCircle />
                         </span>
-                        Please join the telegram group and send any message in
-                        that group and then click on verify
+                        Please send any message to the telegram bot from the
+                        link given below
                     </p>
                     <ButtonGroup>
                         <Button
-                            label={"Join telegram channel for reminders"}
+                            label={"Message telegram bot to get reminders"}
                             type={"inverted"}
                             big
+                            onClick={() =>
+                                window.open(
+                                    "https://t.me/covidvaccinator_bot",
+                                    "_blank"
+                                )
+                            }
                         />
                     </ButtonGroup>
                     <ButtonGroup className={"mobile-verification"}>

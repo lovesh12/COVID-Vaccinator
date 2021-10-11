@@ -33,8 +33,6 @@ passport_1.default.deserializeUser((user, done) => {
 passport_1.default.use("google", new CustomStrategy((req, done) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const token = req.body.token;
-        console.log(token);
-        console.log(process.env.GOOGLE_CLIENT);
         const ticket = yield client.verifyIdToken({
             idToken: token,
             audience: process.env.GOOGLE_CLIENT,

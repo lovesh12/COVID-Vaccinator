@@ -143,7 +143,7 @@ export const verifyTelegram = async (
     const username: string = req.body.username;
     const { email } = req.user as UserDocument;
     const { data }: any = await axios.get(
-        "https://api.telegram.org/bot2018543506:AAG_aUhCSosvCXLkRGCXszid1SkNB7XvCfc/getUpdates"
+        `https://api.telegram.org/${process.env.TELEGRAMBOT_TOKEN}/getUpdates`
     );
     console.log(data);
     let found: boolean | string = false;
