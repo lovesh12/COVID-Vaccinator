@@ -77,12 +77,17 @@ app.delete(
     isAuthenticated,
     reminderController.removeReminder
 );
+app.get(
+    "/account/reminder/list",
+    isAuthenticated,
+    reminderController.listReminder
+);
 app.post(
     "/account/telegram/update",
     isAuthenticated,
     userController.verifyTelegram
 );
-app.post("/account/mobile/add", isAuthenticated, userController.addMobile);
+app.post("/account/mobile/update", isAuthenticated, userController.addMobile);
 app.get(
     "/account/reminder/config",
     isAuthenticated,

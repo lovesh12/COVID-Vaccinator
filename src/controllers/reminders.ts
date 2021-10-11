@@ -18,6 +18,7 @@ export interface IReminderData {
     date: string;
     message: string;
     center?: number;
+    centername?: string;
 }
 
 export const getDose2DueDate = (
@@ -46,6 +47,7 @@ export const utilAddReminder = async (
         date: reminderData.date,
         message: reminderData.message,
         center: reminderData.center,
+        centername: reminderData.centername,
     });
     console.log(res);
     return [true, "Added reminder successfully"];
@@ -73,6 +75,7 @@ export const addReminder = async (
         date: req.body.date,
         message: req.body.message,
         center: req.body.center,
+        centername: req.body.centername ? req.body.centername : "",
     });
     res.status(success ? 200 : 400);
     res.json(success ? { success, message } : { success, error: message });
@@ -90,6 +93,21 @@ export const removeReminder = async (
     const [success, message] = await utilRemoveReminder(req.body.id);
     res.status(success ? 200 : 400);
     res.json({ success, message });
+};
+
+/**
+ * Get list of reminders
+ * @route /GET /account/reminder/list
+ */
+
+export const listReminder = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    const { email } = req.user as UserDocument;
+    const list = await Reminder.find({ email });
+    res.status(200);
+    res.json({ success: true, list });
 };
 
 /**

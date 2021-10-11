@@ -48,6 +48,7 @@ function SetDoses(props) {
     };
 
     const SaveDoses = useMutation((data) => {
+        console.log(vaccine.id);
         return new Promise(async (resolve, reject) => {
             let res = await fetch("/account/setDoses", {
                 method: "POST",
@@ -55,7 +56,7 @@ function SetDoses(props) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ doses: data, vaccine: vaccine.i }),
+                body: JSON.stringify({ doses: data, vaccine: vaccine.id - 1 }),
             });
             res = await res.json();
             if (!res.success) reject(new Error(res.error));

@@ -33,6 +33,7 @@ function CenterVaccineDetails(props) {
             type: 1,
             date,
             center: id,
+            centername: name,
             message: `You have vaccination appointment on ${date} at ${center}`,
         });
     };
@@ -42,6 +43,7 @@ function CenterVaccineDetails(props) {
             type: 2,
             date,
             center: id,
+            centername: name,
             message: `Vaccines are now available at ${center} on ${date}`,
         });
     };

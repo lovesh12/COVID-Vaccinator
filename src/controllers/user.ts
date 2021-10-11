@@ -91,7 +91,9 @@ export const setDoses = async (req: Request, res: Response): Promise<void> => {
         await utilAddReminder(req.user as UserDocument, {
             type: ReminderTypes.Dose2Due,
             date: d2DueDate,
-            message: `Your second dose for is due on ${d2DueDate}`,
+            message: `Your second dose for ${
+                vaccine === VaccineType.COVAXIN ? "COVAIN" : "COVISHIELD"
+            } is due on ${d2DueDate}`,
         });
     }
     if (dosesData["2"]) {
@@ -159,7 +161,7 @@ export const verifyTelegram = async (
         res.status(400);
         res.json({
             success: false,
-            message: "Couldn't find your message to bot",
+            error: "Couldn't find your message to bot",
         });
     }
 };
