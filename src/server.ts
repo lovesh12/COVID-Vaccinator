@@ -1,9 +1,5 @@
 import app from "./app";
-import {
-    intervalCheckNSendReminders,
-    scanReminders,
-} from "./util/sendReminder";
-import createCertificate from "./util/createCertificate";
+import { intervalCheckNSendReminders } from "./util/sendReminder";
 
 const server = app.listen(app.get("port"), () => {
     console.log(

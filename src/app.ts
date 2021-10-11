@@ -17,7 +17,7 @@ import { getCertificate } from "./controllers/user";
 const app = express();
 
 //Express configuration
-app.set("port", process.env.PORT || 3001);
+app.set("port", process.env.PORT || 3000);
 app.set("views", path.join(__dirname, "../views"));
 app.use(compression());
 app.use(bodyParser.json());

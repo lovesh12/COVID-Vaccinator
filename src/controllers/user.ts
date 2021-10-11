@@ -35,6 +35,7 @@ export const googleAuth = (req: Request, res: Response): void => {
         "google",
         (error: Error, user: UserDocument): Response => {
             if (error) {
+                console.log(error);
                 res.status(401);
                 return res.json({
                     success: false,

@@ -6,11 +6,10 @@ import Card from "../../../components/Card/Card";
 import PageContent from "../../../components/Page/PageContent";
 import ButtonGroup from "../../../components/Button/ButtonGroup";
 import heartHealth from "../../../HeartHealth.png";
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from "react-google-login";
 import useRedirect from "../../../hooks/useRedirect";
 
 function Login(props) {
-
     const redirectTo = useRedirect();
     const responseGoogle = async (response) => {
         const token = response.tokenId;
@@ -20,11 +19,11 @@ function Login(props) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({token})
-        })
-        serverResponse = await serverResponse.json()
-        if (serverResponse.success) redirectTo("/account")
-    }
+            body: JSON.stringify({ token }),
+        });
+        serverResponse = await serverResponse.json();
+        if (serverResponse.success) redirectTo("/account");
+    };
 
     return (
         <Page className={"login-page"}>
@@ -43,7 +42,7 @@ function Login(props) {
                             buttonText="Login Using google"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
-                            cookiePolicy={'single_host_origin'}
+                            cookiePolicy={"single_host_origin"}
                         />
                     </ButtonGroup>
                 </Card>
