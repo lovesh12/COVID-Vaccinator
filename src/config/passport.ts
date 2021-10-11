@@ -4,10 +4,10 @@ import passportCustom, { VerifiedCallback } from "passport-custom";
 import { User, UserDocument } from "../models/User";
 import { NativeError } from "mongoose";
 import { OAuth2Client } from "google-auth-library";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env" });
 
-const client = new OAuth2Client(
-    "972720935949-0a2n3a3475p6bru7o1rv64df1gh0mq2r.apps.googleusercontent.com"
-);
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT);
 const CustomStrategy = passportCustom.Strategy;
 
 passport.serializeUser<any, any>(
@@ -34,8 +34,7 @@ passport.use(
                 const token = req.body.token;
                 const ticket = await client.verifyIdToken({
                     idToken: token,
-                    audience:
-                        "972720935949-0a2n3a3475p6bru7o1rv64df1gh0mq2r.apps.googleusercontent.com",
+                    audience: process.env.GOOGLE_CLIENT,
                 });
 
                 const {

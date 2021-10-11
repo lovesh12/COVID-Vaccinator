@@ -20,7 +20,7 @@ export const enum VaccineType {
 
 export const utilTelegramDone = (updateId: string): void => {
     axios.get(
-        "https://api.telegram.org/bot2018543506:AAG_aUhCSosvCXLkRGCXszid1SkNB7XvCfc/getUpdates?offset=" +
+        `https://api.telegram.org/${process.env.TELEGRAMBOT_TOKEN}/getUpdates?offset=` +
             (updateId + 1)
     );
 };

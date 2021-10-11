@@ -128,7 +128,7 @@ export const triggerScanReminders = (req: Request, res: Response): void => {
         res.status(400);
         res.json({
             success: false,
-            message: "Please set body field trigger to true (triggier: true",
+            message: "Please set body field trigger to true (trigger: true",
         });
     }
 };

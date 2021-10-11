@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import html_to_pdf from "html-pdf-node";
-import fs from "fs";
 
 const createCertificate = (
     name: string,

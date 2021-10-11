@@ -3,15 +3,17 @@ import axios from "axios";
 import { Reminder, ReminderDocument } from "../models/Reminder";
 import { ReminderTypes, utilRemoveReminder } from "../controllers/reminders";
 import { User, UserDocument } from "../models/User";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env" });
 
 const vonage = new Vonage({
-    apiKey: "62f16d84",
-    apiSecret: "QHf5nU9rR7CfEVhR",
+    apiKey: process.env.VONAGE_APIKEY,
+    apiSecret: process.env.VONAGE_APISECRET,
 });
 
 export const sendToTelegram = (telegram: string, message: string): void => {
     axios.get(
-        `https://api.telegram.org/bot2018543506:AAG_aUhCSosvCXLkRGCXszid1SkNB7XvCfc/sendMessage?chat_id=${telegram}&text=${message}`
+        `https://api.telegram.org/${process.env.TELEGRAMBOT_TOKEN}/sendMessage?chat_id=${telegram}&text=${message}`
     );
 };
 
@@ -61,6 +63,8 @@ export const scanReminders = (): void => {
     Reminder.find({}, (err: Error, reminders: ReminderDocument[]) => {
         reminders.forEach((reminder) => {
             const today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
             const reminderDate = new Date(
                 reminder.date.split("-").reverse().join("-")
             );
