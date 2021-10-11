@@ -134,8 +134,9 @@ npm start
 ![image](https://user-images.githubusercontent.com/24871407/136822926-21a27814-69b8-4a4c-bf29-2a292ca0dfab.png)
 
 #### SMS Reminder
-![image](https://user-images.githubusercontent.com/24871407/136822947-c2c146f6-2195-409f-b5f1-1d68a4eb2447.png)
+![image](https://user-images.githubusercontent.com/24871407/136823452-365bec00-96ff-489f-a6ac-81ee616106d2.png)
 
 ### Vaccine Certificate
+![image](https://user-images.githubusercontent.com/24871407/136823636-b54d46e7-587b-48e8-b6f0-0658dc0ea03a.png)
 
 
