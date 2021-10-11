@@ -1,23 +1,24 @@
 import mongoose from "mongoose";
-import {ReminderTypes} from "../controllers/reminders";
+import { ReminderTypes } from "../controllers/reminders";
 
 export type ReminderDocument = mongoose.Document & {
-    _id?: string,
-    email?: string,
-    type: ReminderTypes,
-    date: string,
-    time: string,
-    message: string,
-}
+    _id?: mongoose.Schema.Types.ObjectId;
+    email?: string;
+    type: ReminderTypes;
+    date: string;
+    message: string;
+    centre?: number;
+};
 
-const reminderSchema = new mongoose.Schema<ReminderDocument>(
-    {
-        email: String,
-        type: Number,
-        date: String,
-        time: String,
-        message: String,
-    },
+const reminderSchema = new mongoose.Schema<ReminderDocument>({
+    email: String,
+    type: Number,
+    date: String,
+    message: String,
+    centre: Number,
+});
+
+export const Reminder = mongoose.model<ReminderDocument>(
+    "Reminder",
+    reminderSchema
 );
-
-export const Reminder = mongoose.model<ReminderDocument>("Reminder", reminderSchema);
