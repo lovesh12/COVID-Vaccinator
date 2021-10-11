@@ -139,10 +139,10 @@ body (JSON): {"trigger": true}
 ### Reminder Settings
 ![](https://imgur.com/MYFikCr.png)
 
-#### Telegram Reminder
+#### SMS Reminder
 ![image](https://user-images.githubusercontent.com/24871407/136822926-21a27814-69b8-4a4c-bf29-2a292ca0dfab.png)
 
-#### SMS Reminder
+#### Telegram Reminder
 ![image](https://user-images.githubusercontent.com/24871407/136823452-365bec00-96ff-489f-a6ac-81ee616106d2.png)
 
 ### Vaccine Certificate
