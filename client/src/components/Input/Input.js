@@ -8,10 +8,7 @@ function Input(props) {
             className={"input-wrapper"}
             style={{ width: width || "11vw", ...pStyle }}
         >
-            <input
-                {...passingProps}
-                onChange={(e) => onChange(e.target.value)}
-            />
+            <input {...passingProps} onChange={onChange} />
         </div>
     );
 }

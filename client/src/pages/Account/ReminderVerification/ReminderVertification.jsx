@@ -102,7 +102,7 @@ function ReminderVertification(props) {
                             placeholder={"Telegram Username"}
                             width={"20vw"}
                             value={telegram}
-                            onChange={setTelegram}
+                            onChange={(e) => setTelegram(e.target.value)}
                         />
                         <Button
                             label={"Verify"}
@@ -122,7 +122,7 @@ function ReminderVertification(props) {
                             placeholder={"Mobile number"}
                             width={"20vw"}
                             value={mobile}
-                            onChange={setMobile}
+                            onChange={(e) => setMobile(e.target.value)}
                         />
                         <Button
                             label={"Add"}

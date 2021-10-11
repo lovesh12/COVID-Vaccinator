@@ -38,7 +38,7 @@ const user_1 = require("./controllers/user");
 //Create express app
 const app = (0, express_1.default)();
 //Express configuration
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3001);
 app.set("views", path_1.default.join(__dirname, "../views"));
 app.use((0, compression_1.default)());
 app.use(body_parser_1.default.json());
