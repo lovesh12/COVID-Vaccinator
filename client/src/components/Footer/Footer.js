@@ -8,31 +8,23 @@ const footerSections = [
     {
         heading: "Vaccination",
         links: [
-            { label: "Link 1" },
-            { label: "Link 2" },
-            { label: "Link 3" },
-            { label: "Link 4" },
-            { label: "Link 5" },
+            { label: "Quick Find Near Me", url: "/search" },
+            { label: "Search By District", url: "/search" },
+            { label: "Search By Pincode", url: "/search/pincode" },
+            { label: "Search on Map", url: "/search/map" },
         ],
     },
     {
         heading: "Statistics",
-        links: [
-            { label: "Link 1" },
-            { label: "Link 2" },
-            { label: "Link 3" },
-            { label: "Link 4" },
-            { label: "Link 5" },
-        ],
+        links: [{ label: "View Stats", url: "/stats" }],
     },
     {
         heading: "Account",
         links: [
-            { label: "Link 1" },
-            { label: "Link 2" },
-            { label: "Link 3" },
-            { label: "Link 4" },
-            { label: "Link 5" },
+            { label: "Doses", url: "/account" },
+            { label: "Certificate", url: "/account/certificates" },
+            { label: "Reminders", url: "/account/reminders" },
+            { label: "Reminder Details", url: "/account/reminderDetails" },
         ],
     },
 ];
@@ -42,7 +34,8 @@ function Footer(props) {
         <PageHighlight className={"footer"}>
             <div className="footer-sections">
                 {footerSections.map((footerSection, i) => (
-                    <FooterSection key={i}
+                    <FooterSection
+                        key={i}
                         heading={footerSection.heading}
                         links={footerSection.links}
                     />
@@ -50,7 +43,7 @@ function Footer(props) {
             </div>
             <div className="footer-footer">
                 <p>Copyright © 2021 COVID Vaccinator. All Rights Reserved</p>
-                <p>Designed By: Luckshya Verma & Lovesh Verma</p>
+                <p>Developed By: Luckshya Verma & Lovesh Verma</p>
             </div>
         </PageHighlight>
     );

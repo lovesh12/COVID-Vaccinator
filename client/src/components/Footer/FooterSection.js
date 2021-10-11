@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function FooterSection(props) {
     const { heading, links } = props;
@@ -9,7 +10,9 @@ function FooterSection(props) {
 
             <div className="links">
                 {links.map((link, i) => (
-                    <a href={link.url} key={i}>{link.label}</a>
+                    <Link key={i} to={link.url}>
+                        {link.label}
+                    </Link>
                 ))}
             </div>
         </div>

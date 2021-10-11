@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import Page from "../../components/Page/Page";
 import PageContent from "../../components/Page/PageContent";
@@ -6,22 +6,59 @@ import PageContent from "../../components/Page/PageContent";
 import "./SearchVaccine.css";
 import Button from "../../components/Button/Button";
 import { AiOutlineSearch } from "react-icons/all";
-import SearchResults from "./SearchResults/SearchResults";
-import useStateDistrictLists from "../../hooks/useStateDistrictLists";
-import { useQuery, useQueryClient } from "react-query";
-import getDate from "../../util/getDate";
-import SearchByStateDistrict from "./SearchTypes/SearchByStateDistrict";
-
-import SearchByPincodeType from "./SearchTypes/SearchByPincodeType";
 import SearchTypeHeaderBtns from "./SearchTypes/SearchTypeHeaderBtns";
 import CenterMap from "./CenterMap/CenterMap";
 import SearchByDistrict from "./SearchByDistrict";
 import SearchByPincode from "./SearchByPincode";
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import { useQuery } from "react-query";
+import useRedirect from "../../hooks/useRedirect";
 
-const searchBtns = ["By District", "By Pincode", "On The Map"];
+const searchBtns = [
+    {
+        name: "By District",
+        link: "/search",
+    },
+    {
+        name: "By Pincode",
+        link: "/search/pincode",
+    },
+    {
+        name: "On The Map",
+        link: "/search/map",
+    },
+];
 
 function SearchVaccine(props) {
-    const [selectedSearchType, setSelectedSearchType] = useState(0);
+    const redirectTo = useRedirect();
+    const { path } = useRouteMatch();
+
+    const {
+        isSuccess,
+        data: locationData,
+        refetch,
+    } = useQuery(
+        "quickFindNearMe",
+        () =>
+            fetch(`http://ip-api.com/json/?fields=61439`)
+                .then((res) => res.json())
+                .then(async (body) => {
+                    return body;
+                }),
+        {
+            enabled: false,
+            keepPreviousData: true,
+        }
+    );
+
+    useEffect(() => {
+        if (isSuccess && locationData && locationData.zip)
+            redirectTo(`/search/pincode/${locationData.zip}`);
+    }, [locationData]);
+
+    const handleQuickFind = () => {
+        refetch();
+    };
 
     return (
         <Page className={"search-vaccine"}>
@@ -31,22 +68,32 @@ function SearchVaccine(props) {
                     Get a preview list of nearest vaccination centres and
                     availability of vaccination slots
                 </p>
-                <Button
-                    icon={AiOutlineSearch}
-                    label={"Quick Find Near Me"}
-                    type={"inverted"}
-                    big
-                />
+                <Link to={`/search/pincode/`}>
+                    <Button
+                        icon={AiOutlineSearch}
+                        label={"Quick Find Near Me"}
+                        type={"inverted"}
+                        big
+                        onClick={handleQuickFind}
+                    />
+                </Link>
 
-                <SearchTypeHeaderBtns
-                    btnValues={searchBtns}
-                    selected={selectedSearchType}
-                    setSelected={setSelectedSearchType}
-                />
+                <SearchTypeHeaderBtns btnValues={searchBtns} />
             </PageContent>
-            {selectedSearchType === 0 && <SearchByDistrict />}
-            {selectedSearchType === 1 && <SearchByPincode />}
-            {selectedSearchType === 2 && <CenterMap />}
+            <Switch>
+                <Route exact path={path}>
+                    <SearchByDistrict />
+                </Route>
+                <Route exact path={`${path}/pincode`}>
+                    <SearchByPincode />
+                </Route>
+                <Route exact path={`${path}/pincode/:pin`}>
+                    <SearchByPincode />
+                </Route>
+                <Route path={`${path}/map`}>
+                    <CenterMap />
+                </Route>
+            </Switch>
         </Page>
     );
 }

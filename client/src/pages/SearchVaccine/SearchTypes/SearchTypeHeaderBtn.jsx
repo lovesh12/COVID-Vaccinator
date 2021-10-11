@@ -1,15 +1,10 @@
 import React from "react";
 
 function SearchTypeHeaderBtn(props) {
-    const { id, selectedId, onClick, label } = props;
-
-    const isSelected = id === selectedId;
+    const { selected, label } = props;
 
     return (
-        <div
-            className={`search-type ${isSelected ? "selected" : ""}`}
-            onClick={() => onClick(id)}
-        >
+        <div className={`search-type ${selected ? "selected" : ""}`}>
             {label}
         </div>
     );

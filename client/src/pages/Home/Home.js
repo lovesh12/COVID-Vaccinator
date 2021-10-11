@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Page from "../../components/Page/Page";
 import PageContent from "../../components/Page/PageContent";
 
@@ -13,8 +13,20 @@ import PageHighlight from "../../components/Page/PageHighlight";
 import PageNormal from "../../components/Page/PageNormal";
 import VaccinationStep from "./VaccinationStep";
 import VaccineDetail from "./VaccineDetail/VaccineDetail";
+import Faq from "./Faq";
+
+import faqs from "./faqs";
+import { Link } from "react-router-dom";
 
 function Home(props) {
+    const [activeFaq, setActiveFaq] = useState(-1);
+
+    const handleConvinceMe = () => {
+        document
+            .querySelector(".vaccine-why")
+            .scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
         <Page className={"home"}>
             <PageContent>
@@ -22,13 +34,20 @@ function Home(props) {
                     <h4>LETS GET VACCINATED</h4>
                     <p>Have a "Vaccine" rather than a "Virus"</p>
                     <ButtonGroup>
+                        <Link to={"/search"}>
+                            <Button
+                                big
+                                type={"inverted"}
+                                icon={AiOutlineSearch}
+                                label={"Search for Vaccines"}
+                            />
+                        </Link>
                         <Button
                             big
-                            type={"inverted"}
-                            icon={AiOutlineSearch}
-                            label={"Search for Vaccines"}
+                            type={"bordered"}
+                            label={"Convince Me"}
+                            onClick={handleConvinceMe}
                         />
-                        <Button big type={"bordered"} label={"Convince Me"} />
                     </ButtonGroup>
                 </div>
                 <div className="right-pane">
@@ -53,11 +72,11 @@ function Home(props) {
             <PageNormal className={"vaccine-why"}>
                 <h2>Why should you get vaccinated?</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Malesuada facilisis montes, dignissim aliquam est penatibus
-                    maecenas sit scelerisque. Amet ullamcorper purus
-                    sollicitudin nulla nulla. Risus malesuada tempor tortor eu
-                    arcu. Maecenas quis facilisis mauris, aliquet amet pretium.
+                    Vaccines help the immune system counter infections faster
+                    and in a more effective manner. When you are vaccinated, it
+                    sparks the immune response, thus helping the body to fight
+                    off and remember the virus so that it can attack it in the
+                    event of a future invasion.
                 </p>
             </PageNormal>
             <PageHighlight className={"vaccine-steps"} lite>
@@ -103,30 +122,16 @@ function Home(props) {
             <PageHighlight className={"vaccine-faqs"} lite>
                 <h2>Frequently Asked Questions</h2>
                 <div className="faqs">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Risus sit eget urna ut.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Risus sit eget urna ut.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Risus sit eget urna ut.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Risus sit eget urna ut.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Risus sit eget urna ut.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Risus sit eget urna ut.
-                    </p>
+                    {faqs.map((faq, i) => (
+                        <Faq
+                            key={i}
+                            id={i}
+                            question={faq[0]}
+                            answer={faq[1]}
+                            isActive={activeFaq === i}
+                            setActive={setActiveFaq}
+                        />
+                    ))}
                 </div>
             </PageHighlight>
         </Page>

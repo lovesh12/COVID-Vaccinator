@@ -5,8 +5,15 @@ import getDate from "../../util/getDate";
 import PageContent from "../../components/Page/PageContent";
 import SearchResults from "./SearchResults/SearchResults";
 
+import { useParams } from "react-router-dom";
+
 function SearchByPincode(props) {
-    const [pincode, setPincode] = useState("");
+    const { pin } = useParams();
+    const [pincode, setPincode] = useState(pin);
+
+    useEffect(() => {
+        if (pin && pin !== "") setPincode(pin);
+    }, [pin]);
 
     const {
         isSuccess,
@@ -40,7 +47,7 @@ function SearchByPincode(props) {
     return (
         <>
             <PageContent className={"search-results-pagecontent"}>
-                <SearchByPincodeType setPincode={setPincode} />
+                <SearchByPincodeType value={pincode} setPincode={setPincode} />
             </PageContent>
             {centers && isSuccess && (
                 <SearchResults centers={centers} state={""} />

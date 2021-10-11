@@ -6,9 +6,9 @@ import { AiOutlineSearch } from "react-icons/all";
 import Button from "../../../components/Button/Button";
 
 function SearchByPincodeType(props) {
-    const { setPincode } = props;
+    const { value, setPincode } = props;
 
-    const [pincodeVal, setPincodeVal] = useState("");
+    const [pincodeVal, setPincodeVal] = useState(value);
 
     const handleChange = (e) => {
         setPincodeVal(e.target.value);
