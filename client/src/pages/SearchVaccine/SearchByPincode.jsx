@@ -39,7 +39,9 @@ function SearchByPincode(props) {
     );
 
     useEffect(() => {
-        refetch();
+        if (pincode) {
+            refetch();
+        }
     }, [pincode]);
 
     console.log(centers);
